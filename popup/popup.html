@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PRIVISION</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <!-- Top Bar with Illustration and Settings Cog (Edge-to-Edge Hero) -->
+    <div class="banner-box">
+      <img src="../icons/banner-illustration.png" alt="Illustration" class="banner-img">
+      <button type="button" class="gear-btn" id="btnOpenOptions" title="Options & Model Settings">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Main Popup Content -->
+    <div class="popup-content">
+      <!-- Title and Subtitle -->
+      <div class="brand-header">
+        <h1 class="brand-title">PRIVISION</h1>
+        <div class="brand-subtitle">Privacy Boundary</div>
+      </div>
+
+    <!-- Protection Active Pill -->
+    <div class="status-pill-row">
+      <button type="button" class="status-pill active" id="statusPill" title="Toggle On-Device Privacy Shield">
+        <span class="status-dot"></span>
+        <span class="status-pill-text" id="statusPillText">PROTECTION ACTIVE</span>
+      </button>
+    </div>
+
+    <!-- Reasoning Backend Status Pill -->
+    <div class="backend-pill-row" style="margin: 4px 0 12px; display: flex; justify-content: center;">
+      <div id="popupBackendPill" class="backend-status-pill" style="display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 600; padding: 4px 12px; border-radius: 9999px; background: rgba(16, 185, 129, 0.12); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3);">
+        <span id="popupBackendDot" style="width: 6px; height: 6px; border-radius: 50%; background: #10B981;"></span>
+        <span id="popupBackendText">REASONING BACKEND: ONLINE</span>
+      </div>
+    </div>
+
+    <!-- Accordion 01: DETECTION RULES -->
+    <div class="accordion-item" id="accDetectionRules">
+      <button type="button" class="accordion-header" id="btnAccDetection" aria-expanded="false">
+        <div class="acc-title-left">
+          <svg class="acc-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+          <span class="acc-num">01</span>
+          <span class="acc-label">DETECTION RULES</span>
+        </div>
+        <svg class="chevron-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M6 9l6 6 6-6"/>
+        </svg>
+      </button>
+
+      <div class="accordion-body" id="bodyDetectionRules">
+        <!-- Detection Toggles -->
+        <div class="rule-row">
+          <div class="rule-info">
+            <svg class="rule-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="4" width="18" height="16" rx="2"/>
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+            </svg>
+            <span class="rule-name">Email addresses</span>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="ruleEmails" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+
+        <div class="rule-row">
+          <div class="rule-info">
+            <svg class="rule-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            <span class="rule-name">Phone numbers</span>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="rulePhones" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+
+        <div class="rule-row">
+          <div class="rule-info">
+            <svg class="rule-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            <span class="rule-name">Physical addresses</span>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="ruleAddresses" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+
+        <div class="rule-row">
+          <div class="rule-info">
+            <svg class="rule-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="2" y1="12" x2="22" y2="12"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+            <span class="rule-name">IP addresses</span>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="ruleIps" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+
+        <div class="rule-row">
+          <div class="rule-info">
+            <svg class="rule-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+            <span class="rule-name">Names</span>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="ruleNames">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+
+        <!-- Detection Model Sub-section -->
+        <div class="sub-model-section">
+          <div class="sub-model-title">
+            Detection model
+            <span class="info-dot" title="Choose on-device lightweight model or custom weights">ⓘ</span>
+          </div>
+          <label class="radio-label">
+            <input type="radio" name="popupModelChoice" value="builtin" checked>
+            <span class="radio-custom"></span>
+            <span class="radio-text">Built-in (lightweight)</span>
+          </label>
+          <label class="radio-label">
+            <input type="radio" name="popupModelChoice" value="custom-hf">
+            <span class="radio-custom"></span>
+            <span class="radio-text">Custom model</span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Accordion 02: ACTIVATION MODE -->
+    <div class="accordion-item" id="accActivationMode">
+      <button type="button" class="accordion-header" id="btnAccActivation" aria-expanded="false">
+        <div class="acc-title-left">
+          <svg class="acc-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="2" y1="12" x2="22" y2="12"/>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+          <span class="acc-num">02</span>
+          <span class="acc-label">ACTIVATION MODE</span>
+        </div>
+        <svg class="chevron-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M6 9l6 6 6-6"/>
+        </svg>
+      </button>
+
+      <div class="accordion-body" id="bodyActivationMode">
+        <label class="radio-label">
+          <input type="radio" name="activationMode" value="always-on" id="modeRadioAlways" checked>
+          <span class="radio-custom"></span>
+          <span class="radio-text">Always active</span>
+        </label>
+        <label class="radio-label">
+          <input type="radio" name="activationMode" value="site-scoped" id="modeRadioScoped">
+          <span class="radio-custom"></span>
+          <span class="radio-text">Specific websites</span>
+        </label>
+
+        <!-- Allowed websites list (shown when specific websites chosen) -->
+        <div class="allowed-sites-box" id="allowedSitesBox">
+          <div class="allowed-sites-title">Allowed websites</div>
+          <div class="allowed-list" id="allowedListContainer">
+            <!-- Dynamically populated -->
+          </div>
+          <div class="add-website-row">
+            <button type="button" class="btn-add-website" id="btnAddWebsite">
+              <span>+</span>
+              <span>Add website</span>
+            </button>
+            <div class="add-site-input-wrap hidden" id="addSiteInputWrap">
+              <input type="text" id="newSiteInput" class="new-site-input" placeholder="domain.com">
+              <button type="button" class="btn-site-save" id="btnSaveSite">Add</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <!-- Footer -->
+      <footer class="popup-footer">
+        <span class="footer-text">Your data stays with you.</span>
+        <div class="footer-avatar">
+          <img src="../icons/logo-avatar.png" alt="Avatar" class="avatar-img">
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

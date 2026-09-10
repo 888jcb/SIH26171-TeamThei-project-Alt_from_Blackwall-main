@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PRIVISION Settings & Model Portal</title>
+  <link rel="stylesheet" href="../styles/redact.css">
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="options-layout">
+    <!-- Sidebar / Brand -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="logo-icon">
+          <img src="../icons/logo-avatar.png" alt="Avatar" class="sidebar-avatar-img">
+        </div>
+        <div>
+          <h2>PRIVISION</h2>
+          <span class="badge">Privacy Boundary</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="#section-general" class="nav-link">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+          </svg>
+          <span>General</span>
+        </a>
+        <a href="#section-model" class="nav-link active">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+            <line x1="8" y1="21" x2="16" y2="21"/>
+            <line x1="12" y1="17" x2="12" y2="21"/>
+          </svg>
+          <span>Model Settings</span>
+        </a>
+        <a href="#section-rules" class="nav-link">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+          <span>Privacy Rules</span>
+        </a>
+        <a href="#section-about" class="nav-link">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="16" x2="12" y2="12"/>
+            <line x1="12" y1="8" x2="12.01" y2="8"/>
+          </svg>
+          <span>About</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="footer-status">
+          <span class="pulse-dot"></span>
+          <span>On-Device Privacy Active</span>
+        </div>
+        <div class="footer-note">SIH26171 • Team Theia</div>
+      </div>
+    </aside>
+
+    <!-- Main Content Panels -->
+    <main class="main-content">
+      <!-- Header -->
+      <header class="content-header">
+        <h1>Configuration & Privacy Portal</h1>
+        <p>Control on-device perception models, domain boundary scopes, and test visual redaction animations.</p>
+      </header>
+
+      <!-- Notification Toast -->
+      <div id="toast" class="toast hidden"></div>
+
+      <!-- Section 1: Model Settings -->
+      <section id="section-model" class="config-section">
+        <div class="section-title-row">
+          <div>
+            <h2>Model Settings</h2>
+            <p class="section-subtitle">Choose your preferred model for on-device inference.</p>
+          </div>
+        </div>
+
+        <!-- Reasoning Backend Connection Card -->
+        <div class="model-choice-card" id="backendStatusCard" style="margin-bottom: 20px; border-left: 4px solid #10B981;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+            <div>
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span id="backendStatusTitle" style="font-weight: 700; font-size: 15px; color: var(--text-color, #F8FAFC);">REASONING BACKEND: ONLINE</span>
+                <span id="backendStatusDot" style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #10B981;"></span>
+              </div>
+              <div style="margin-top: 4px; font-size: 13px; color: var(--text-muted, #94A3B8);">
+                Connected to local AI reasoning service (Gemini 3.6 Flash)
+              </div>
+            </div>
+            <span id="backendStatusBadge" class="default-badge" style="background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid #10B981; padding: 4px 10px; border-radius: 9999px; font-size: 11px; font-weight: 600;">ONLINE</span>
+          </div>
+
+          <div class="form-group" style="margin-top: 14px;">
+            <label class="field-label" style="font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted, #94A3B8);">Reasoning Backend Endpoint</label>
+            <div style="display: flex; gap: 10px; align-items: center; margin-top: 6px;">
+              <input type="text" id="backendEndpointInput" class="text-input" value="http://localhost:3721" readonly style="flex: 1; font-family: monospace; font-size: 13px; background: rgba(0,0,0,0.2);">
+              <button type="button" class="btn btn-dark" id="btnTestConnection" style="white-space: nowrap; padding: 8px 16px;">Test Connection</button>
+            </div>
+            <div id="backendConnectionFeedback" style="margin-top: 8px; font-size: 12px; color: #10B981; min-height: 18px;">
+              Connected • HTTP 200 OK • PRIVISION Reasoning API Server (gemini-3.6-flash)
+            </div>
+          </div>
+        </div>
+
+        <!-- Built-in Model (Recommended) -->
+        <div class="model-choice-card">
+          <label class="model-choice-header">
+            <input type="radio" name="modelSource" value="builtin" checked>
+            <span class="custom-radio-circle"></span>
+            <div class="model-choice-text">
+              <div class="model-choice-name">
+                Built-in Model (Recommended)
+                <span class="default-badge">Default</span>
+              </div>
+              <div class="model-choice-desc">Lightweight ViT / MobileViT model (ONNX)</div>
+            </div>
+          </label>
+        </div>
+
+        <!-- Custom Model -->
+        <div class="model-choice-card">
+          <label class="model-choice-header">
+            <input type="radio" name="modelSource" value="custom-hf">
+            <span class="custom-radio-circle"></span>
+            <div class="model-choice-text">
+              <div class="model-choice-name">Custom Model</div>
+              <div class="model-choice-desc">Use your own model or remote endpoint.</div>
+            </div>
+          </label>
+
+          <!-- Custom Model Form Fields -->
+          <div id="customModelFields" class="custom-model-form">
+            <div class="form-group">
+              <label class="field-label">Model Source</label>
+              <select id="customSourceType" class="select-input">
+                <option value="hf">Hugging Face (model id)</option>
+                <option value="onnx">Custom ONNX URL</option>
+                <option value="remote">Private Inference Endpoint</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <input type="text" id="customModelUrl" class="text-input" placeholder="e.g. microsoft/mobilevit-small">
+            </div>
+
+            <div class="form-group">
+              <label class="field-label">API Endpoint (optional)</label>
+              <input type="text" id="remoteEndpointUrl" class="text-input" placeholder="https://your-endpoint.com">
+            </div>
+
+            <div class="custom-model-actions">
+              <button type="button" class="btn btn-dark" id="btnValidateModel">Test Model</button>
+              <button type="button" class="btn btn-primary" id="btnSaveCustomModel">Save</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hidden hardware settings maintained for functionality -->
+        <div style="display: none;">
+          <input type="password" id="customApiKey" value="">
+          <select id="executionProvider">
+            <option value="auto" selected>Auto</option>
+          </select>
+          <span id="validationBadge">Ready</span>
+          <span id="validationMessage"></span>
+        </div>
+      </section>
+
+      <!-- Section: General -->
+      <section id="section-general" class="config-section">
+        <div class="section-title-row">
+          <div>
+            <h2>General</h2>
+            <p class="section-subtitle">Scope and boundaries for on-device privacy protection.</p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="field-label">Domain Allowlist (Specific Websites Mode)</label>
+          <p class="section-desc">When Specific Websites mode is active, PRIVISION will ONLY engage visual perception and redaction on designated domains.</p>
+          <div class="allowlist-add-bar">
+            <input type="text" id="newDomainInput" class="text-input" placeholder="e.g. netbanking.hdfcbank.com or myportal.internal">
+            <button type="button" class="btn btn-primary" id="btnAddDomain">+ Add</button>
+          </div>
+          <div class="allowlist-tags" id="allowlistTags"></div>
+        </div>
+      </section>
+
+      <!-- Section: Privacy Rules -->
+      <section id="section-rules" class="config-section">
+        <div class="section-title-row">
+          <div>
+            <h2>Privacy Rules</h2>
+            <p class="section-subtitle">Tune detection sensitivity and safety guardrails.</p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="slider-header">
+            <label class="field-label">Detection Confidence Threshold</label>
+            <span class="slider-value" id="thresholdValue">0.50 (Balanced)</span>
+          </div>
+          <input type="range" id="confidenceThreshold" class="slider-input" min="0.1" max="0.9" step="0.05" value="0.5">
+          <div class="slider-ticks">
+            <span>High Sensitivity (0.10)</span>
+            <span>Balanced (0.50)</span>
+            <span>High Precision (0.90)</span>
+          </div>
+        </div>
+
+        <div class="checkbox-row">
+          <label class="checkbox-container">
+            <input type="checkbox" id="failClosedCheckbox" checked>
+            <span class="checkmark"></span>
+            <div class="checkbox-text">
+              <strong>Fail-Closed on High-Risk Fields (Mandatory Safety Boundary)</strong>
+              <span>If an input matches password, credit card, or national ID patterns, redact it immediately regardless of lower vision confidence.</span>
+            </div>
+          </label>
+        </div>
+      </section>
+
+      <!-- Section: Interactive Judgement Playground -->
+      <section id="section-preview" class="config-section preview-section">
+        <div class="section-title-row">
+          <div>
+            <h2>Interactive Judgement Playground</h2>
+            <p class="section-subtitle">Trigger Judgement Animation: Temporary detection feedback — the original webpage remains unchanged.</p>
+          </div>
+        </div>
+
+        <!-- Sample Form for testing -->
+        <div class="preview-playground" id="playgroundContainer">
+          <div class="sample-card">
+            <div class="sample-card-header">
+              <div class="sample-avatar-box" id="sampleAvatar">
+                <img src="../icons/icon-128.png" alt="User Avatar" class="sample-avatar-img">
+              </div>
+              <div>
+                <div class="sample-user-name" id="sampleName">Alexander Wright</div>
+                <div class="sample-user-role">Verified Customer • Horizon Bank</div>
+              </div>
+              <span class="sample-badge">Active Session</span>
+            </div>
+
+            <div class="sample-form-grid">
+              <div class="sample-field-group">
+                <label class="sample-label">Account Holder Email</label>
+                <input type="email" id="sampleEmail" class="sample-input" value="alexander.wright@horizon-corp.org" readonly>
+              </div>
+
+              <div class="sample-field-group">
+                <label class="sample-label">Master Account Password</label>
+                <input type="password" id="samplePassword" class="sample-input" value="SuperSecureToken#2026!" readonly>
+              </div>
+
+              <div class="sample-field-group">
+                <label class="sample-label">Primary Payment Card</label>
+                <input type="text" id="sampleCard" class="sample-input" value="4532 •••• •••• 8819 (CVV: 729)" readonly>
+              </div>
+
+              <div class="sample-field-group">
+                <label class="sample-label">Social Security / National ID</label>
+                <input type="text" id="sampleSsn" class="sample-input" value="128-44-9821" readonly>
+              </div>
+            </div>
+          </div>
+
+          <div class="preview-actions">
+            <button type="button" class="btn btn-primary" id="btnRunTestRedaction">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+              Trigger Judgement Animation
+            </button>
+            <button type="button" class="btn btn-outline" id="btnResetPlayground">
+              Reset Playground
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: About -->
+      <section id="section-about" class="config-section">
+        <div class="section-title-row">
+          <div>
+            <h2>About PRIVISION</h2>
+            <p class="section-subtitle">On-device perception & privacy-preserving redaction layer.</p>
+          </div>
+        </div>
+        <p class="section-desc">Smart India Hackathon • SIH26171 • Team Theia</p>
+        <p class="section-desc" style="color: var(--text-muted); font-size: 13px;">Designed to protect user identity and confidential inputs with mathematical and optical guarantees before sending context to multimodal LLMs.</p>
+      </section>
+
+      <!-- Save Bar -->
+      <div class="save-bar">
+        <span class="save-info">Changes are persisted to Chrome Storage on-device.</span>
+        <button type="button" class="btn btn-save" id="btnSaveSettings">Save Configuration</button>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="options.js"></script>
+</body>
+</html>
